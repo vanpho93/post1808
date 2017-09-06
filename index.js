@@ -1,6 +1,6 @@
 const express = require('express');
 const Tinh = require('./Tinh');
-const reload = require('reload'); // eslint-disable-line
+// const reload = require('reload'); // eslint-disable-line
 // middleware
 const bodyParser = require('body-parser');
 
@@ -12,7 +12,7 @@ app.use(express.static('./public'));
 app.set('views', './views');
 app.set('view engine', 'ejs');
 
-app.get('/', (req, res) => res.render('home'));
+app.get('/', (req, res) => res.render('index'));
 
 app.post('/signin', parser, (req, res) => {
     console.log(req.body);
@@ -25,7 +25,7 @@ app.post('/tinh', parser, (req, res) => {
     res.send(pt.getResultString());
 });
 
-reload(app);
+// reload(app);
 
-app.listen(3000, () => console.log('Server started'));
+app.listen(process.env.PORT || 3000, () => console.log('Server started'));
 //http://pixelhint.com/capture-free-responsive-bootstrap-app-landing-page-theme/
