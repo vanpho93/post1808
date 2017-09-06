@@ -1,4 +1,5 @@
 const express = require('express');
+const Tinh = require('./Tinh');
 const reload = require('reload'); // eslint-disable-line
 // middleware
 const bodyParser = require('body-parser');
@@ -19,8 +20,11 @@ app.post('/signin', parser, (req, res) => {
 });
 
 app.post('/tinh', parser, (req, res) => {
-    //TODO HERE
+    const { soa, sob, tenPhepTinh } = req.body;
+    const pt = new Tinh(tenPhepTinh, soa, sob);
+    res.send(pt.getResultString());
 });
+
 reload(app);
 
 app.listen(3000, () => console.log('Server started'));
