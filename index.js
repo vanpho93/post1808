@@ -28,3 +28,4 @@ app.post('/tinh', parser, (req, res) => {
 reload(app);
 
 app.listen(3000, () => console.log('Server started'));
+//http://www.tooplate.com/view/2085-neuron
